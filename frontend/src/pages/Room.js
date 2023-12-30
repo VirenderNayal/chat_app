@@ -58,9 +58,9 @@ function Room() {
                         </span>
                         <div className="form-group w-75 py-1">
                             <label for="email">Chat id : </label>
-                            <input type="email" className="form-control" id="email" />
+                            <input type="email" className="form-control" id="email" onChange={(e) => setRoomId(e.target.value)} />
                         </div>
-                        <button className='btn btn-success my-2'>
+                        <button className='btn btn-success my-2' onClick={handleJoinRoom}>
                             Join a Chat
                         </button>
                     </div>

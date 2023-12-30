@@ -43,13 +43,13 @@ io.on("connection", (socket) => {
         const {email, offer} = data;
         const fromEmail = socketToEmailMapping.get(socket.id);
         const socketId = emailToSocketMapping.get(email);
-        socket.to(socketId).emit('incoming-call', {fromEmail, offer});
+        socket.to(socketId).emit("incoming-call", {fromEmail, offer});
     })
 
-    socket.on('call-accepted', (data) => {
+    socket.on("call-accepted", (data) => {
         const {fromEmail, res} = data;
         const socketId = emailToSocketMapping.get(fromEmail);
-        socket.to(socketId).emit('call-accepted', {res});
+        socket.to(socketId).emit("call-accepted", {res});
     })
 });
 

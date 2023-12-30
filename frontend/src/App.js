@@ -13,6 +13,7 @@ function App() {
         <PeerProvider>
           <Routes>
             <Route path="/" element={<Room />} />
+            {/* <Route path="/chat" element={<Room />} /> */}
             <Route path="/chat/:roomId" element={<Chat />} />
           </Routes>
         </PeerProvider>
