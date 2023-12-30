@@ -3,14 +3,19 @@ import Homepage from "./pages/Homepage";
 import "./App.css"
 import Room from "./pages/Room";
 import { SocketProvider } from "./providers/Socket";
+import Chat from "./pages/Chat";
+import { PeerProvider } from "./providers/Peer";
 
 function App() {
   return (
     <BrowserRouter>
       <SocketProvider>
-        <Routes>
-          <Route path="/" element={<Room />} />
-        </Routes>
+        <PeerProvider>
+          <Routes>
+            <Route path="/" element={<Room />} />
+            <Route path="/chat/:roomId" element={<Chat />} />
+          </Routes>
+        </PeerProvider>
       </SocketProvider>
     </BrowserRouter>
   );

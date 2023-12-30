@@ -1,22 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useSocket } from '../providers/Socket'
+import { useNavigate } from 'react-router-dom';
 
 function Room() {
-    const { socket } = useSocket();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('userInfo')));
     const [roomId, setRoomId] = useState();
+    const navigate = useNavigate();
+    const { socket } = useSocket();
 
-    // useEffect(() => {
-    //     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    //     setUser(userInfo)
-    // }, [])
+    const handleRoomJoined = useCallback(({roomId}) => {
+        navigate(`/chat/${roomId}`);
+    }, [navigate])
 
+    useEffect(() => {
+        socket.on('joined-room', handleRoomJoined);
+
+        return () => {
+            socket.off('joined-room', handleRoomJoined);
+        }
+    }, [socket, handleRoomJoined])
 
     const handleJoinRoom = () => {
         const email = user.email
         socket.emit("join-room", {email, roomId});
     }
+
     return (
         <div className='d-flex flex-column align-items-center vh-100'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,0" />
@@ -60,7 +69,7 @@ function Room() {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default Room
