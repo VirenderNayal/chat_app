@@ -13,7 +13,6 @@ const Homepage = () => {
       <Navbar />
 
       <div className='d-flex text-white h-100'>
-
         <div className='d-flex flex-column justify-content-center w-100 px-5'>
           <div>
             <img src={logo} alt="logo" height={"170px"} style={{ filter: "brightness(0) invert(1)" }} />
@@ -23,9 +22,7 @@ const Homepage = () => {
           </div>
         </div>
 
-
         <div className='d-flex align-items-center justify-content-center w-100'>
-
           <div className='d-flex flex-column align-items-center justify-content-evenly section-blur h-75 w-75 rounded py-5'>
             <div className='w-100 d-flex align-items-center justify-content-center text-white'>
               {
@@ -86,17 +83,10 @@ const Homepage = () => {
                 <>
                   <button className='btn btn-primary w-50'>SignUp</button>
                 </>
-
             }
-
           </div>
-
         </div>
-
-
       </div>
-
-
     </div>
   )
 }

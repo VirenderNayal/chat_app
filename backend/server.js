@@ -1,12 +1,19 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
-const app = express();
+const connectDB = require("./config/db");
+const userRouter = require("./routes/userRoutes");
 dotenv.config()
 
-app.get('/apicall', (req, res) => {
+connectDB()
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
     res.send("API is running")
 })
+
+app.use('/api/user', userRouter)
 
 const PORT = process.env.PORT
 app.listen(PORT, console.log("server started"))
