@@ -1,11 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import logo from "../logo.png"
 import Login from '../components/Login'
 import Signup from '../components/Signup'
+import axios from 'axios'
 
 const Homepage = () => {
   const [isLogin, setIsLogin] = useState(true)
+
+  const f = async () => {
+    const data = await axios.get("/");
+    console.log(data);
+  }
+  
+  useEffect(() => {
+    f();
+  }, [])
+  
 
   const switchLoginSignup = () => {
     setIsLogin(!isLogin)
