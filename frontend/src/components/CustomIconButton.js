@@ -1,8 +1,8 @@
 import React from 'react'
 
-function CustomIconButton({ icon, text }) {
+function CustomIconButton({ icon, text, handleClick }) {
     return (
-        <div>
+        <div role='button' onClick={handleClick}>
             <div className='d-flex align-items-center justify-content-center'>
                 <div className='d-flex position-absolute' style={{ height: "100px", width: "100px", backgroundColor: "rgba(0, 132, 255, 0.2)", borderRadius: "50px" }}>
                 </div>
