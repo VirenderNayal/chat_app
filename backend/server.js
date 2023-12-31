@@ -3,7 +3,9 @@ const { Server } = require("socket.io");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const userRouter = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 dotenv.config()
 
@@ -20,10 +22,15 @@ app.get('/api', (req, res) => {
     res.send("API is running")
 })
 
-app.use('/api/user', userRouter)
+// User Register and Login APIs
+app.use('/api/user', userRoutes)
+app.use('/api/chat', chatRoutes);
+app.use('/api/message', messageRoutes);
 app.use(notFound)
 app.use(errorHandler)
 
+
+//Video Chat APIs
 const emailToSocketMapping = new Map();
 const socketToEmailMapping = new Map();
 

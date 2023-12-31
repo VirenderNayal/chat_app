@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-const { useNavigate } = "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [ack, setAck] = useState()
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const submitHandler = async () => {
         setAck("");
@@ -27,9 +27,9 @@ function Login() {
             setAck("Log In successfull !!");
 
             localStorage.setItem('userInfo', JSON.stringify(data));
-            console.log(data);
             navigate("/chat")
         } catch (error) {
+            console.log(error);
             setAck(error)
         }
 

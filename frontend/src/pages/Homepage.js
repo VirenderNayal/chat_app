@@ -3,13 +3,26 @@ import Navbar from '../components/Navbar'
 import logo from "../logo.png"
 import Login from '../components/Login'
 import Signup from '../components/Signup'
+import { useNavigate } from 'react-router-dom'
 
 const Homepage = () => {
   const [isLogin, setIsLogin] = useState(true)
+  const navigate = useNavigate();
+  const [user, setUser] = useState();
 
   const switchLoginSignup = () => {
     setIsLogin(!isLogin)
   }
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    setUser(userInfo);
+
+    if (userInfo) {
+      navigate("/chat");
+    }
+  }, [navigate])
+
   return (
     <div className='d-flex flex-column vh-100'>
       <Navbar />
@@ -32,7 +45,7 @@ const Homepage = () => {
             </div>
 
             {
-              isLogin ? <Login /> : <Signup/>   
+              isLogin ? <Login /> : <Signup />
             }
           </div>
         </div>

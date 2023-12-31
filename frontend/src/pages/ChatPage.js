@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player';
 import VideoCall from '../components/VideoCall';
 import Texting from '../components/Texting';
 
-function Chat() {
+function ChatPage() {
     const { socket } = useSocket();
     const { peer, createOffer, createOfferResponse, setRemoteResponse, sendStream, remoteStream } = usePeer();
     const [myStream, setMyStream] = useState(null);
@@ -142,4 +142,4 @@ function Chat() {
     )
 }
 
-export default Chat
+export default ChatPage;
