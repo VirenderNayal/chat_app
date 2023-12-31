@@ -75,6 +75,7 @@ function Chat() {
             setSwitchText("Video");
         }
     }
+
     useEffect(() => {
         peer.addEventListener('negotiationneeded', handleNegotiation);
 
@@ -116,7 +117,7 @@ function Chat() {
                         }
                     </div>
                     <div className='d-flex w-25 section-blur rounded m-3'>
-                        <ReactPlayer className="p-2" url={myStream} playing />
+                        <ReactPlayer className="p-2" url={myStream} playing={pauseText === "Pause" ? true : false} muted/>
                     </div>
                 </div>
 
