@@ -6,6 +6,8 @@ import { usePeer } from '../providers/Peer';
 import ReactPlayer from 'react-player';
 import VideoCall from '../components/VideoCall';
 import Texting from '../components/Texting';
+import { useChat } from '../providers/Chat';
+import axios from 'axios';
 
 function ChatPage() {
     const { socket } = useSocket();
@@ -113,11 +115,11 @@ function ChatPage() {
                             switchIcon === "chat" ?
                                 <VideoCall isSmall={false} stream={myStream} />
                                 :
-                                <Texting />
+                                <Texting  isSmall={false} />
                         }
                     </div>
                     <div className='d-flex w-25 section-blur rounded m-3'>
-                        <ReactPlayer className="p-2" url={myStream} playing={pauseText === "Pause" ? true : false} muted/>
+                        <ReactPlayer className="p-2" url={myStream} playing={pauseText === "Pause" ? true : false} muted />
                     </div>
                 </div>
 
@@ -127,7 +129,7 @@ function ChatPage() {
                             switchIcon === "videocam" ?
                                 <VideoCall isSmall={true} stream={myStream} />
                                 :
-                                <Texting />
+                                <Texting isSmall={true} />
                         }
                         <div className='d-flex justify-content-center align-items-center mt-5 mx-5'>
                             <CustomIconButton handleClick={handleSwitch} icon={switchIcon} text={switchText} />

@@ -4,7 +4,7 @@ const { accessChat } = require("../controllers/chatControllers");
 
 const router = express.Router();
 
-router.route('/').post(protect, accessChat);
+router.route('/').post(accessChat);
 
 
 module.exports = router;
