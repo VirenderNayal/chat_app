@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CustomIconButton from '../components/CustomIconButton'
 import ReactPlayer from 'react-player';
 
-function VideoCall({ stream, isSmall }) {
+function VideoCall({ stream, isSmall, pauseText }) {
     const [volume, setVolume] = useState(5);
     const [muteText, setMuteText] = useState("Mute");
     const [micIcon, setMicIcon] = useState("mic");
@@ -27,7 +27,7 @@ function VideoCall({ stream, isSmall }) {
     return (
         <>
             <div className={`d-flex ${!isSmall && "h-100 mx-5"} w-50 px-3`}>
-                <ReactPlayer height={isSmall && "190px"} className="p-2" url={stream} playing muted={volume === 0 ? true : false} />
+                <ReactPlayer height={isSmall && "190px"} className="p-2" url={stream} playing={pauseText === "Pause" ? true : false} muted={volume === 0 ? true : false} />
             </div>
             {!isSmall &&
                 <div className='d-flex w-50 h-100 alig-items-center'>
